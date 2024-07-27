@@ -1,6 +1,9 @@
 package mod_paquetes;
 
-public class Pendiente extends EstadoDelPaquete{
+public class
+
+
+Pendiente extends EstadoDelPaquete{
     public Pendiente(Paquete paquete) {
         super(paquete);
     }

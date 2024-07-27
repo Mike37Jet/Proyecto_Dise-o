@@ -18,6 +18,17 @@ public class Vehiculo {
         this.lineaDeEntrega = lineaDeEntrega;
     }
 
+    public void iniciarViaje() {
+        lineaDeEntrega.generarMejorLineaDeEntrega();
+    }
+    public void finalizarViaje() {
+        lineaDeEntrega = null;
+    }
+
+    public void cargarPaquete() {
+        // Cargar paquete
+    }
+
     public double getCapacidad() {
         return capacidad;
     }

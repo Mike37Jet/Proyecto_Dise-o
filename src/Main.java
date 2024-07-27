@@ -7,6 +7,7 @@ import mod_paquetes.Inventario;
 import mod_paquetes.Paquete;
 import mod_paquetes.Provincia;
 import mod_transporte.Asignacion;
+import mod_transporte.LineaDeEntrega;
 import mod_transporte.Vehiculo;
 
 import java.util.ArrayList;
@@ -27,8 +28,7 @@ public class Main {
 
         Usuario remitente1 =
                 new Cliente("Juan Pérez", "12345678A", "Calle Principal 123", "1234567890", "juanperez@example.com");
-        Paquete paquete1 =
-                new Paquete("TRACK123", 5, 0.2, "Libros", remitente1, Provincia.PICHINCHA, Provincia.AZUAY, "Calle Mayor, 12");
+        Paquete paquete1 = new Paquete("TRACK123", 5, 0.2, "Libros", remitente1, Provincia.PICHINCHA, Provincia.AZUAY, "Calle Mayor, 12");
         Paquete paquete2 = new Paquete("TRACK456", 2.0, 5.0, "Electrodomésticos", remitente1, Provincia.AZUAY, Provincia.PICHINCHA, "Avenida Amazonas, Quito");
         Paquete paquete3 = new Paquete("TRACK789", 25.0, 5.0, "Cajas", remitente1, Provincia.PICHINCHA, Provincia.GUAYAS, "Avenida Amazonas, Quito");
 
@@ -39,6 +39,9 @@ public class Main {
         inventario.agregarPaquete(paquete3);
         asignacion.asignarConductorAVehiculo(conductor1);
         asignacion.asignarPaquetesAVehiculo(vehiculo);
+
+        vehiculo.asignarLineaDeEntrega(new LineaDeEntrega(vehiculo));
+
         ArrayList<Paquete> paquetes = conductor1.consultarPaquetesAsignados();
     }
 }

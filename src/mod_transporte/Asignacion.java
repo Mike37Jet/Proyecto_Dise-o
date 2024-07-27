@@ -56,26 +56,28 @@ public class Asignacion {
     }
 
     public void asignarPaquetesAVehiculo(Vehiculo vehiculo) {
+        // Obtener paquetes pendientes
         ArrayList<Paquete> paquetesPendientes  = Inventario.obtenerInstancia().obtenerPaquetesPendientes();
         ArrayList<Paquete> paquetes;
-        if (paquetesPendientes.isEmpty()) {
+        if (paquetesPendientes.isEmpty()) { // No hay paquetes pendientes
             return;
-        } else if (asignacionPaquetes.containsKey(vehiculo)) {
+        } else if (asignacionPaquetes.containsKey(vehiculo)) { // Si Vehículo ya tiene paquetes asignados
             paquetes = asignacionPaquetes.get(vehiculo);
-        } else {
+        } else { // Vehículo no tiene paquetes asignados
             paquetes = new ArrayList<>();
             asignacionPaquetes.put(vehiculo, paquetes);
         }
         double capacidadDisponible = vehiculo.getCapacidad();
 
         HashMap<Provincia, ArrayList<Paquete>> paquetesPorProvincia = new HashMap<>();
-
+        // Agrupar paquetes por provincia
         for (Paquete paquete : paquetesPendientes) {
             Provincia provincia = paquete.getProvinciaDestino();
+
             paquetesPorProvincia.putIfAbsent(provincia, new ArrayList<>());
             paquetesPorProvincia.get(provincia).add(paquete);
         }
-
+        // Asignar paquetes a vehículo
         for (Map.Entry<Provincia, ArrayList<Paquete>> entry : paquetesPorProvincia.entrySet()) {
             ArrayList<Paquete> paquetesProvincia = entry.getValue();
             for (Paquete paquete : paquetesProvincia) {
