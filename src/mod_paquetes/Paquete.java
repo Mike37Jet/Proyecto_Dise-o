@@ -44,9 +44,9 @@ public class Paquete {
         double latitude1 = provinciaOrigen.getLatitud();
         double latitude2 = provinciaDestino.getLatitud();
         double theta = longitude1 - longitude2;
-        double distance = 60 * 1.1515 * (180/Math.PI) * Math.acos(
-                Math.sin(latitude1 * (Math.PI/180)) * Math.sin(latitude2 * (Math.PI/180)) +
-                        Math.cos(latitude1 * (Math.PI/180)) * Math.cos(latitude2 * (Math.PI/180)) * Math.cos(theta * (Math.PI/180))
+        double distance = 60 * 1.1515 * (180 / Math.PI) * Math.acos(
+                Math.sin(latitude1 * (Math.PI / 180)) * Math.sin(latitude2 * (Math.PI / 180)) +
+                        Math.cos(latitude1 * (Math.PI / 180)) * Math.cos(latitude2 * (Math.PI / 180)) * Math.cos(theta * (Math.PI / 180))
         );
         return Math.round(distance * 1.609344);
     }
